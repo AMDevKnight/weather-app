@@ -8,9 +8,10 @@ function App() {
   const [search, setSearch] = useState("")
   const [success, setSuccess] = useState()
   const myState = useSelector((state) => state.weatherDetail)
+
+  console.log(myState)
   const dispatch = useDispatch()
   dispatch(FETCH_WEATHER_DETAILS(search))
-  console.log(myState)
 
   function formatAMPM(date) {
     var hours = date.getHours();
@@ -33,7 +34,6 @@ function App() {
       setSuccess(false)
     }
   }
-
   function weatherDetail() {
     dispatch(FETCH_WEATHER_DETAILS(search))
     if (myState.success === true) {
@@ -106,7 +106,7 @@ function App() {
               <tbody id="weather__info">
                 <tr>
                   <th> Cloudy</th>
-                  <td>{myState.data.name}</td>
+                  <td>{myState.data.clouds.all}</td>
                 </tr>
                 <tr>
                   <th>Humidity</th>
